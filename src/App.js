@@ -8,9 +8,9 @@ function App() {
 
   const [dice, setdice] = useState(allDiceNums())
 
-  // give dice a state of held when clicked
+
   // do not change state if held
-  // change die color if state == held
+
 
   // gets an array of random numbers 
   function allDiceNums() {
@@ -18,8 +18,8 @@ function App() {
     for (let i = 0; i < 10; i++) {
       allDice.push({ 
         value: Math.ceil(Math.random() * 6), 
-        isHeld: true,
-        dieId: nanoid()
+        isHeld: false,
+        dieId: nanoid(),
        })
 
     }
@@ -27,13 +27,25 @@ function App() {
 
   }
 
+  function holdDice(id) {
+    setdice(prevDice => prevDice.map(die => {
+      return die.dieId === id? {...die, isHeld: !die.isHeld} :
+      die
+    }))
+  }
+
   // maps over the dice array creating a Die component for each index 
   // const diceElements = dice.map((die) => <Die key={die.dieId} value={die.value} held={die.isHeld}/>)
-  const diceElements = dice.map((die) => <Die key={die.dieId} value={die} />)
+  const diceElements = dice.map((die) => 
+  <Die 
+  key={die.dieId} 
+  value={die} 
+  holdDice={() => holdDice(die.dieId)}
+  />)
 
   console.log(dice)
 
-  // triggers a new dice values
+  // triggers new dice values
   function handleClick() {
     setdice(allDiceNums())
   }
