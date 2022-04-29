@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Die from './components/Die';
 import { nanoid } from 'nanoid'
@@ -7,7 +7,21 @@ import { nanoid } from 'nanoid'
 function App() {
 
   const [dice, setdice] = useState(allDiceNums())
+  const [tenzies, setTenzies] = useState(false)
 
+  useEffect(() => {
+    const allHeld = dice.every(die => die.isHeld)
+    const allEqual = dice.every((die, index, arr)=> {
+     return index === 0 || die.value === arr[index - 1].value? true :
+     false;
+    })
+
+    allHeld && allEqual? setTenzies(prevTenzies => !prevTenzies) :
+    setTenzies(prevTenzies => prevTenzies)
+
+  },[dice])
+
+  console.log(tenzies)
 
   function generateDice() {
         return {
