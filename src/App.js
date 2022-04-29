@@ -9,19 +9,19 @@ function App() {
   const [dice, setdice] = useState(allDiceNums())
 
 
-  // do not change state if held
+  function generateDice() {
+        return {
+        value: Math.ceil(Math.random() * 6), 
+        isHeld: false,
+        dieId: nanoid()
+      }
+  }
 
-
-  // gets an array of random numbers 
+  // gets an array of random dice
   function allDiceNums() {
     let allDice = []
     for (let i = 0; i < 10; i++) {
-      allDice.push({ 
-        value: Math.ceil(Math.random() * 6), 
-        isHeld: false,
-        dieId: nanoid(),
-       })
-
+      allDice.push(generateDice())
     }
     return allDice
 
@@ -45,9 +45,12 @@ function App() {
 
   console.log(dice)
 
-  // triggers new dice values
+  // triggers new dice values if not held
   function handleClick() {
-    setdice(allDiceNums())
+    setdice(prevDice => prevDice.map(dieItem => {
+       return dieItem.isHeld? dieItem:
+      generateDice()
+    }))
   }
 
 
