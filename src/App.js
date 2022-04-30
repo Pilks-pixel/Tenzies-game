@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Die from './components/Die';
 import { nanoid } from 'nanoid'
@@ -7,21 +7,35 @@ import { nanoid } from 'nanoid'
 function App() {
 
   const [dice, setdice] = useState(allDiceNums())
+  const [tenzies, setTenzies] = useState(false)
 
+  useEffect(() => {
+    const allHeld = dice.every(die => die.isHeld)
+    const allEqual = dice.every((die, index, arr)=> {
+     return index === 0 || die.value === arr[index - 1].value? true :
+     false;
+    })
 
-  // do not change state if held
+    allHeld && allEqual? setTenzies(prevTenzies => !prevTenzies) :
+    setTenzies(prevTenzies => prevTenzies)
 
+  },[dice])
 
-  // gets an array of random numbers 
+  console.log(tenzies)
+
+  function generateDice() {
+        return {
+        value: Math.ceil(Math.random() * 6), 
+        isHeld: false,
+        dieId: nanoid()
+      }
+  }
+
+  // gets an array of random dice
   function allDiceNums() {
     let allDice = []
     for (let i = 0; i < 10; i++) {
-      allDice.push({ 
-        value: Math.ceil(Math.random() * 6), 
-        isHeld: false,
-        dieId: nanoid(),
-       })
-
+      allDice.push(generateDice())
     }
     return allDice
 
@@ -45,9 +59,12 @@ function App() {
 
   console.log(dice)
 
-  // triggers new dice values
+  // triggers new dice values if not held
   function handleClick() {
-    setdice(allDiceNums())
+    setdice(prevDice => prevDice.map(dieItem => {
+       return dieItem.isHeld? dieItem:
+      generateDice()
+    }))
   }
 
 
