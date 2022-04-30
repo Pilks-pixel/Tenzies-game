@@ -9,6 +9,7 @@ function App() {
   const [dice, setdice] = useState(allDiceNums())
   const [tenzies, setTenzies] = useState(false)
 
+  // Checks if all the dice are Equal and Held
   useEffect(() => {
     const allHeld = dice.every(die => die.isHeld)
     const allEqual = dice.every((die, index, arr)=> {
@@ -16,8 +17,7 @@ function App() {
      false;
     })
 
-    allHeld && allEqual? setTenzies(prevTenzies => !prevTenzies) :
-    setTenzies(prevTenzies => prevTenzies)
+    if (allHeld && allEqual) setTenzies(prevTenzies => !prevTenzies) 
 
   },[dice])
 
@@ -73,7 +73,7 @@ function App() {
       <div className="dice-container">
         {diceElements}
       </div>
-      <button onClick={handleClick} >Roll</button>
+      <button onClick={handleClick} >{tenzies? "New Game" : "Roll"}</button>
     </main>
   );
 }
