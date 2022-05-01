@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid'
 
 function App() {
 
-  const [dice, setdice] = useState(allDiceNums())
+  const [dice, setDice] = useState(allDiceNums())
   const [tenzies, setTenzies] = useState(false)
 
   // Checks if all the dice are Equal and Held
@@ -20,8 +20,6 @@ function App() {
     if (allHeld && allEqual) setTenzies(prevTenzies => !prevTenzies) 
 
   },[dice])
-
-  console.log(tenzies)
 
   function generateDice() {
         return {
@@ -42,7 +40,7 @@ function App() {
   }
 
   function holdDice(id) {
-    setdice(prevDice => prevDice.map(die => {
+    setDice(prevDice => prevDice.map(die => {
       return die.dieId === id? {...die, isHeld: !die.isHeld} :
       die
     }))
@@ -57,14 +55,18 @@ function App() {
   holdDice={() => holdDice(die.dieId)}
   />)
 
-  console.log(dice)
 
-  // triggers new dice values if not held
+  // triggers new dice values if not held or game complete
   function handleClick() {
-    setdice(prevDice => prevDice.map(dieItem => {
+    if (tenzies) {
+      setDice(allDiceNums)
+      setTenzies(prevTenzies => !prevTenzies)
+    } else {
+    setDice(prevDice => prevDice.map(dieItem => {
        return dieItem.isHeld? dieItem:
       generateDice()
     }))
+    }
   }
 
 
