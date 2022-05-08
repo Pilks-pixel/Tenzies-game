@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Die(props) {
     const styles = {
-        backgroundColor: props.value.isHeld? '#59E391' :  '#FFFFFF'
+        backgroundColor: props.value.isHeld? '#59E391' :  '#18191f'
     }
 
     
