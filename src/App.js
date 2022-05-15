@@ -4,6 +4,7 @@ import Die from './components/Die';
 import { nanoid } from 'nanoid'
 
 
+
 function App() {
 
   const [dice, setDice] = useState(allDiceNums())
@@ -70,15 +71,18 @@ function App() {
   }
 
 
+
   return (
     <main className="App">
       <h1 className='title'>Tenzies</h1>
-      <p className="instructions">Roll until all dice are the same.</p>
-      <p className="instructions">Click each die to freeze it at its current value between rolls.</p>
+      <p className="instructions">Roll until all dice are the same</p>
+      <p className="instructions">Click each die to freeze it at its current value between rolls</p>
       <div className="dice-container">
         {diceElements}
       </div>
       <button onClick={handleClick} >{tenzies? "New Game" : "Roll"}</button>
+      {tenzies && <h1 className='title'>Winner!</h1>}
+
     </main>
   );
 }

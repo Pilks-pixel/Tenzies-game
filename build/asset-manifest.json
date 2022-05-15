@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Tenzies-game/static/css/main.73111fcd.css",
+    "main.js": "/Tenzies-game/static/js/main.4b1749d8.js",
+    "static/media/takashi-miyazaki-64ajtpEzlYc-unsplash.jpg": "/Tenzies-game/static/media/takashi-miyazaki-64ajtpEzlYc-unsplash.5b9ac951909e6f7166fd.jpg",
+    "index.html": "/Tenzies-game/index.html",
+    "main.73111fcd.css.map": "/Tenzies-game/static/css/main.73111fcd.css.map",
+    "main.4b1749d8.js.map": "/Tenzies-game/static/js/main.4b1749d8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.73111fcd.css",
+    "static/js/main.4b1749d8.js"
+  ]
+}
