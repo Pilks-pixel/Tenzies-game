@@ -85,7 +85,7 @@ function App() {
         {diceElements}
       </div>
       <button onClick={handleClick} >{tenzies? "New Game" : "Roll"}</button>
-      {tenzies && <h1 className='title'>Winner!</h1>}
+      {tenzies && <h1 className='win'>Winner!</h1>}
 
     </main>
   );
