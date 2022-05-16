@@ -1,7 +1,7 @@
 # Tenzies
 
 ![Tenzies screenshot](./src/assets/tenzies.png)
-:rocket **Deployed** with GitHub pages https://pilks-pixel.github.io/Tenzies-game/
+:rocket: **Deployed** with GitHub pages https://pilks-pixel.github.io/Tenzies-game/
 
 
 ## About
@@ -10,25 +10,31 @@ Dice game built with React to demonstrate my knowledge state through hooks and p
 
 
 ## Instructions
+Clone down to local machine, 
 
 ### `npm start` to run in the development mode.
+
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 
 ## Wins
 -[x] Made use of useState & useEffect hooks to manage individual states of each dice between rolls.
+
 -[x] Created dice faces using css with neon effect.
+
 -[x] Sound effects added with Uifx dependency.
 
 
 ## Futurefeatures
 -[] Dice rolls count.
+
 -[] Highscores page with database used for persistance.
 
 
 ## Significant code
 '''javascript
-`// Checks if all the dice are Equal and Held
+
+// Checks if all the dice are Equal and Held
   useEffect(() => {
     const allHeld = dice.every(die => die.isHeld)
     const allEqual = dice.every((die, index, arr)=> {
