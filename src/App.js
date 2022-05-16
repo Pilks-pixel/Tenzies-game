@@ -2,12 +2,16 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Die from './components/Die';
 import { nanoid } from 'nanoid'
+import UIfx from 'uifx'
+import Roll from './assets/dice06.wav'
 
 
 function App() {
 
   const [dice, setDice] = useState(allDiceNums())
   const [tenzies, setTenzies] = useState(false)
+  const rollSound = new UIfx(Roll)
+
 
   // Checks if all the dice are Equal and Held
   useEffect(() => {
@@ -62,6 +66,7 @@ function App() {
       setDice(allDiceNums)
       setTenzies(prevTenzies => !prevTenzies)
     } else {
+    rollSound.play()  
     setDice(prevDice => prevDice.map(dieItem => {
        return dieItem.isHeld? dieItem:
       generateDice()
@@ -70,15 +75,18 @@ function App() {
   }
 
 
+
   return (
     <main className="App">
       <h1 className='title'>Tenzies</h1>
-      <p className="instructions">Roll until all dice are the same.</p>
-      <p className="instructions">Click each die to freeze it at its current value between rolls.</p>
+      <p className="instructions">Roll until all dice are the same</p>
+      <p className="instructions">Click each die to freeze it at its current value between rolls</p>
       <div className="dice-container">
         {diceElements}
       </div>
       <button onClick={handleClick} >{tenzies? "New Game" : "Roll"}</button>
+      {tenzies && <h1 className='title'>Winner!</h1>}
+
     </main>
   );
 }
