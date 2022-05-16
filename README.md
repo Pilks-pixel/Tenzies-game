@@ -10,9 +10,9 @@ Dice game built with React to demonstrate my knowledge state through hooks and p
 
 
 ## Instructions
-Clone down to local machine, 
+Clone down to local machine & `npm install` then cd game
 
-### `npm start` to run in the development mode.
+`npm start` to run in the development mode.
 
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
@@ -32,14 +32,20 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 
 ## Significant code
-'''javascript
+```javascript
 
 // Checks if all the dice are Equal and Held
+
   useEffect(() => {
+
     const allHeld = dice.every(die => die.isHeld)
+
     const allEqual = dice.every((die, index, arr)=> {
+
      return index === 0 || die.value === arr[index - 1].value? true :
+
      false;
+
     })
 
     if (allHeld && allEqual) setTenzies(prevTenzies => !prevTenzies) 
