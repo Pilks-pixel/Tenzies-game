@@ -10,7 +10,7 @@ Dice game built with React, demonstrating my knowledge state through hooks and p
 
 
 ## Instructions
-Clone down to local machine, `npm install` and `cd game`
+Clone down to local machine, `npm install` and `cd game`  
 
 `npm start` to run in the development mode.
 

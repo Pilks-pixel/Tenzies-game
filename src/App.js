@@ -84,7 +84,7 @@ function App() {
       <div className="dice-container">
         {diceElements}
       </div>
-      <button onClick={handleClick} >{tenzies? "New Game" : "Roll"}</button>
+      <button className='button' onClick={handleClick} >{tenzies? "New Game" : "Roll"}</button>
       {tenzies && <h1 className='win'>Winner!</h1>}
 
     </main>

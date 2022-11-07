@@ -2,6 +2,7 @@ import React from "react";
 
 
 
+
 export default function Die(props) {
     const styles = {
         backgroundColor: props.value.isHeld? '#59E391' :  '#18191f'
@@ -15,25 +16,25 @@ export default function Die(props) {
             </div> */}
 
             { props.value.value === 1 &&
-                <div className='first-face' style={styles} onClick={props.holdDice}>
+                <div className='first-face die' style={styles} onClick={props.holdDice}>
                     <span className='dot' ></span>
                 </div> 
             }
             { props.value.value === 2 &&
-                <div className='second-face' style={styles} onClick={props.holdDice}>
+                <div className='second-face die' style={styles} onClick={props.holdDice}>
                     <span className='dot' ></span>
                     <span className='dot' ></span>
                 </div> 
             }
             { props.value.value === 3 &&
-                <div className='third-face' style={styles} onClick={props.holdDice}>
+                <div className='third-face die' style={styles} onClick={props.holdDice}>
                     <span className='dot' ></span>
                     <span className='dot' ></span>
                     <span className='dot' ></span>
                 </div> 
             }
             { props.value.value === 4 &&
-                <div className='fourth-face' style={styles} onClick={props.holdDice}>
+                <div className='fourth-face die' style={styles} onClick={props.holdDice}>
                     <div className='column'>
                         <span className='dot' ></span>
                         <span className='dot' ></span>
@@ -45,7 +46,7 @@ export default function Die(props) {
                 </div> 
             }
             { props.value.value === 5 &&
-                <div className='fifth-face' style={styles} onClick={props.holdDice}>
+                <div className='fifth-face die' style={styles} onClick={props.holdDice}>
                     <div className='column'>
                         <span className='dot' ></span>
                         <span className='dot' ></span>
@@ -58,7 +59,7 @@ export default function Die(props) {
                 </div> 
             }
             { props.value.value === 6 &&
-                <div className='sixth-face' style={styles} onClick={props.holdDice}>
+                <div className='sixth-face die' style={styles} onClick={props.holdDice}>
                     <div className='column'>
                         <span className='dot' ></span>
                         <span className='dot' ></span>
